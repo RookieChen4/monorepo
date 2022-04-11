@@ -11,11 +11,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.17.9",
-    "@cjh/utils": "workspace:^1.0.0",
     "axios": "^0.26.1",
     "babel-loader": "^8.2.4",
-    "core-js": "^3.21.1",
     "css-loader": "^6.7.1",
     "eslint-webpack-plugin": "^3.1.1",
     "html-webpack-plugin": "^5.5.0",
@@ -23,5 +20,8 @@
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.8.1"
+  },
+  "dependencies": {
+    "@cjh/utils": "workspace:*"
   }
 }

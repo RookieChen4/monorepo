@@ -1,2 +1,2 @@
 import { test } from '@cjh/utils';
-test();
+test(22233);

@@ -25,3 +25,8 @@
 todo: eslint husky lint-staged 提交规范和代码规范
 
 todo: 如何一次性启动所有项目,目前是一个个 run dev
+
+todo: tsconfig 如何配置一份
+
+问题：Circular dependencies
+`注意排除掉父级的node_modules`

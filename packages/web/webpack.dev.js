@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -11,7 +12,7 @@ module.exports = {
   cache: {
     type: 'filesystem',
   },
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.resolve(__dirname, 'src/index.ts'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
@@ -62,7 +63,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /(\.ts|\.js)$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
