@@ -1,8 +1,11 @@
 module.exports = {
   root: true,
-  parser: '@typescript-eslint/parser',
+  parser: 'vue-eslint-parser',
   extends: [
     'eslint:recommended',
+    '@vue/typescript/recommended',
+    'plugin:vue/vue3-recommended',
+    'plugin:vue/base',
     'plugin:prettier/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
@@ -14,7 +17,7 @@ module.exports = {
     ecmaVersion: 2020,
     sourceType: 'module',
   },
-  plugins: ['html'],
+  plugins: ['vue'],
   rules: {
     'prettier/prettier': [
       'error',
@@ -22,5 +25,6 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    'vue/script-setup-uses-vars': 'error',
   },
 };

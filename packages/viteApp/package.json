@@ -1,0 +1,23 @@
+{
+  "name": "@cjh/viteApp",
+  "private": true,
+  "version": "0.0.0",
+  "browser": {
+    "./vueHook": "./dist/vueHook/index.esm.js",
+    "./vanilla": "./dist/vanilla/index.esm.js"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.1",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.5",
+    "vue-tsc": "^0.34.7"
+  },
+  "dependencies": {
+    "@cjh/utils": "workspace:*"
+  }
+}
