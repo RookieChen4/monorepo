@@ -13,7 +13,7 @@
 	  "resolveJsonModule": true, // 加载json
 	  "esModuleInterop": true, 
 	  "removeComments": false, // 删除注释
-  
+		
   
 	  "declaration": true, // 生成定义文件
 	  "declarationMap": false, // 生成定义sourceMap

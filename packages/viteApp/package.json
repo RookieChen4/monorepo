@@ -18,6 +18,7 @@
     "vue-tsc": "^0.34.7"
   },
   "dependencies": {
+    "@cjh/ui": "workspace:*",
     "@cjh/utils": "workspace:*"
   }
 }

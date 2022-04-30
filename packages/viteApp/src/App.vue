@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import { useCount } from '@cjh/utils/vueHook';
-const tes = 123;
+import { cjhButton } from '@cjh/ui/vueui';
+import '@cjh/ui/vanilla';
 type em = {
   count: import('vue').Ref<number>;
   add: () => void;
 };
+const buttonName = 'cjh';
 const { count, add }: em = useCount();
 </script>
 
 <template>
+  <cjhButton :buttonName="buttonName" @clickButtom="add" />
   <button @click="add">{{ count }}</button>
-  <header>{{ tes }}</header>
+  <cjh-button2 />
 </template>
 
 <style>

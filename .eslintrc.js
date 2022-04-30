@@ -4,14 +4,14 @@ module.exports = {
   extends: [
     'eslint:recommended',
     '@vue/typescript/recommended',
-    'plugin:vue/vue3-recommended',
-    'plugin:vue/base',
     'plugin:prettier/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:vue/base',
   ],
   env: {
     browser: true,
     node: true,
+    'vue/setup-compiler-macros': true,
   },
   parserOptions: {
     ecmaVersion: 2020,
@@ -26,5 +26,10 @@ module.exports = {
       },
     ],
     'vue/script-setup-uses-vars': 'error',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { vars: 'all', args: 'after-used', ignoreRestSiblings: true },
+    ],
   },
 };
