@@ -35,6 +35,9 @@ export default defineConfig([
       {
         file: `dist/vueui/index.umd.js`,
         format: 'umd',
+        globals: {
+          vue: 'vue', // 指明 global.vue 即是外部依赖 vue
+        },
         name,
       },
     ],

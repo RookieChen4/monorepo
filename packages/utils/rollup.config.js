@@ -3,8 +3,6 @@ import { defineConfig } from 'rollup';
 import commonjs from '@rollup/plugin-commonjs';
 // resolve将我们编写的源码与依赖的第三方库进行合并
 import { nodeResolve as resolve } from '@rollup/plugin-node-resolve';
-// import typescript from 'rollup-plugin-typescript2';
-// import typescript from '@rollup/plugin-typescript';
 import typescript from 'rollup-plugin-ts';
 import { babel } from '@rollup/plugin-babel';
 import vue from 'rollup-plugin-vue';
