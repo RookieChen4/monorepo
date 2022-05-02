@@ -6,7 +6,6 @@ module.exports = {
     '@vue/typescript/recommended',
     'plugin:prettier/recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:vue/base',
   ],
   env: {
     browser: true,

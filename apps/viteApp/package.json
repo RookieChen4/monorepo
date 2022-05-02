@@ -20,6 +20,6 @@
   },
   "dependencies": {
     "@cjh/ui": "workspace:*",
-    "@cjh/utils": "workspace:*"
+    "@cjh/shared": "workspace:*"
   }
 }
