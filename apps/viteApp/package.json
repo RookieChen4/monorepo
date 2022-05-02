@@ -1,11 +1,7 @@
 {
-  "name": "@cjh/viteApp",
+  "name": "@cjh/viteapp",
   "private": true,
   "version": "0.0.0",
-  "browser": {
-    "./vueHook": "./dist/vueHook/index.esm.js",
-    "./vanilla": "./dist/vanilla/index.esm.js"
-  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",

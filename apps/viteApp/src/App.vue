@@ -1,9 +1,11 @@
 <template>
   <testAntVue />
+  <testShared />
 </template>
 
 <script setup lang="ts">
 import testAntVue from './components/testAntVue.vue';
+import testShared from './components/testShared.vue';
 </script>
 
 <style>

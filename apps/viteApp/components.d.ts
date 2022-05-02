@@ -9,7 +9,9 @@ declare module '@vue/runtime-core' {
     ACheckbox: typeof import('ant-design-vue/es')['Checkbox']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
     ADatePicker: typeof import('ant-design-vue/es')['DatePicker']
+    AInputNumber: typeof import('ant-design-vue/es')['InputNumber']
     TestAntVue: typeof import('./src/components/testAntVue.vue')['default']
+    TestShared: typeof import('./src/components/testShared.vue')['default']
   }
 }
 

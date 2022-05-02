@@ -24,6 +24,7 @@ importers:
       lint-staged: ^12.3.7
       lodash-es: ^4.17.21
       prettier: ^2.6.2
+      react: ^18.1.0
       sass: ^1.51.0
       tslib: ^2.4.0
       typescript: ^4.6.3
@@ -49,6 +50,7 @@ importers:
       lint-staged: 12.3.7
       lodash-es: 4.17.21
       prettier: 2.6.2
+      react: 18.1.0
       sass: 1.51.0
       tslib: 2.4.0
       typescript: 4.6.3
@@ -86,6 +88,33 @@ importers:
       webpack-cli: ^4.9.2
       webpack-dev-server: ^4.8.1
     dependencies:
+      '@cjh/utils': link:../../packages/utils
+    devDependencies:
+      axios: 0.26.1
+      babel-loader: 8.2.4_acba72ea4bf9d339cdfcd8f55cdb7006
+      css-loader: 6.7.1_webpack@5.72.0
+      eslint-webpack-plugin: 3.1.1_eslint@8.13.0+webpack@5.72.0
+      html-webpack-plugin: 5.5.0_webpack@5.72.0
+      mini-css-extract-plugin: 2.6.0_webpack@5.72.0
+      webpack: 5.72.0_webpack-cli@4.9.2
+      webpack-cli: 4.9.2_0d7fbf49284cee8179ee97aed7cf05b4
+      webpack-dev-server: 4.8.1_webpack-cli@4.9.2+webpack@5.72.0
+
+  apps/webpackApp:
+    specifiers:
+      '@cjh/shared': workspace:*
+      '@cjh/utils': workspace:*
+      axios: ^0.26.1
+      babel-loader: ^8.2.4
+      css-loader: ^6.7.1
+      eslint-webpack-plugin: ^3.1.1
+      html-webpack-plugin: ^5.5.0
+      mini-css-extract-plugin: ^2.6.0
+      webpack: ^5.72.0
+      webpack-cli: ^4.9.2
+      webpack-dev-server: ^4.8.1
+    dependencies:
+      '@cjh/shared': link:../../packages/shared
       '@cjh/utils': link:../../packages/utils
     devDependencies:
       axios: 0.26.1
@@ -5330,6 +5359,13 @@ packages:
       http-errors: 1.8.1
       iconv-lite: 0.4.24
       unpipe: 1.0.0
+    dev: true
+
+  /react/18.1.0:
+    resolution: {integrity: sha512-4oL8ivCz5ZEPyclFQXaNksK3adutVS8l2xzZU0cqEFrE9Sb7fC0EFK5uEk74wIreL1DERyjvsU915j1pcT2uEQ==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      loose-envify: 1.4.0
     dev: true
 
   /readable-stream/2.3.7:

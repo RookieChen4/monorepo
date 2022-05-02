@@ -2,7 +2,10 @@
   "name": "@cjh/shared",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "browser": {
+    "./vueHooks": "./dist/vueHooks/index.mjs",
+    "./utils": "./dist/utils/index.mjs"
+  },
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup"
