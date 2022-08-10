@@ -1,5 +1,4 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="container">
@@ -12,7 +11,8 @@
   margin: 0;
   padding: 0;
 }
-#app, body {
+#app,
+body {
   width: 100%;
   height: 100vh;
 }

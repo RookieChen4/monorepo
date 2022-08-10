@@ -17,6 +17,8 @@ declare global {
   }
 }
 
+window.escapeKey1 = 'escapeKey1'
+
 
 function render() {
   const app: Element = document.getElementById("app") as Element

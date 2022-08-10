@@ -6,14 +6,13 @@
   "private": "true",
   "scripts": {
     "lint-staged": "lint-staged",
-    "ui:dev": "pnpm run dev --filter @cjh/ui",
-    "shared:dev": "pnpm run dev --filter @cjh/shared",
-    "viteapp:dev": "pnpm run dev --filter @cjh/viteapp",
-    "webpackapp:dev": "pnpm run dev --filter @cjh/webpackapp",
-    "viteapp:build": "pnpm run build --filter @cjh/viteApp",
-    "webpackapp:build": "pnpm run build --filter @cjh/webpackapp"
+    "ui:dev": "npx pnpm run --filter @cjh/ui dev",
+    "shared:dev": "npx pnpm run dev --filter @cjh/shared dev",
+    "main:dev": "npx pnpm run --filter @cjh/main dev",
+    "reactApp:dev": "npx pnpm run --filter @cjh/reactapp dev",
+    "test": "npx jest"
   },
-  "author": "",
+  "author": "cjh",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.17.9",
@@ -41,5 +40,10 @@
     "tslib": "^2.4.0",
     "typescript": "^4.6.3",
     "vue": "^3.2.33"
+  },
+  "dependencies": {
+    "@types/jest": "^28.1.6",
+    "jest": "^28.1.3",
+    "ts-jest": "^28.0.7"
   }
 }

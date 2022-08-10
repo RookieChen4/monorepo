@@ -8,5 +8,6 @@ export default defineConfig({
     vue(),
     VueJsx({
       isCustomElement: (tag: string) => tag.includes('micro-app')
-    })]
-})
+    }),
+  ],
+});
