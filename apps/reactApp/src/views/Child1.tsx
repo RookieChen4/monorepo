@@ -6,8 +6,12 @@ export default function Child1() {
   console.log('token', token);
   const click = () => {
     console.log(23333);
-    
   }
+
+  // const script = document.createElement('script')
+  // script.setAttribute('ignore', 'true')
+  // script.src = './index.js';
+  // document.body.append(script)
     return (
       <>
         <main>
