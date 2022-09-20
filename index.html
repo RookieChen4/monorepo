@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const swap = (array, i, j) => {
+        let temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    };
+
+    let array = [2, 3, 10, 6, 4, 8, 5, 7, 9]
+    // const shuffledArr = array => array.sort(() => 0.5 - Math.random());
+    // shuffledArr(array);
+
+    const heapify = (array, i, len) => {
+        const left = 2 * i + 1;
+        const right = 2 * i + 2;
+        let largest = i;
+        if(left <= len && array[left] > array[largest]) {
+            largest = left;
+        }
+
+        if(right <= len && array[right] > array[largest]) {
+            largest = right;
+        }
+        if(largest !== i) {
+            [array[largest], array[i]] = [array[i], array[largest]]
+            heapify(array, largest, len)
+        }
+    }
+
+    const heapSort = (array) => {
+        for(let i = Math.floor(array.length /2); i >= 0; i --) {
+            heapify(array, i, array.length - 1)
+        }
+        for(let i = array.length - 1; i > 0; i--) {
+            [array[i], array[0]] = [array[0], array[i]]
+            heapify(array, 0, i - 1)
+        }
+    }
+
+    const bubbleSort = (array) => {
+        let flag = true;
+        for(let i = 0; i < array.length && flag; i++) {
+            flag = false
+            for(let j = 0; j < array.length - 1 - i; j ++) {
+                if(array[j] > array[j + 1]) {
+                    flag = true;
+                    [array[j], array[j+1]] = [array[j+1], array[j]];
+                }
+            }
+        }
+    }
+
+    const insertSort = (array) => {
+        for(let i = 1; i < array.length; i++) {
+            const temp = array[i];
+            for(j = i - 1; j >= 0; j--) {
+                if(temp < array[j]) {
+                    [array[j], array[j + 1]] = [array[j + 1], array[j]];
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+
+    const shellSort = (array) => {
+        const length = array.length;
+        for(let gap = Math.floor(length /2); gap > 0; gap = Math.floor(gap / 2)) {
+            for(let i = gap; i < length; i ++) {
+                // insertSort
+                for(j = i - gap; j >= 0; j-= gap) {
+                    if(array[j + gap] < array[j]) {
+                        [array[j], array[j + gap]] = [array[j + gap], array[j]];
+                    } else {
+                        break;
+                    }
+                }
+                // let j = i;
+                // let temp = array[i];
+                // if(array[j] < array[j - gap]) {
+                //     while(j - gap >= 0 && temp < array[j - gap]) {
+                //         array[j] = array[j - gap];
+                //         j -= gap
+                //     }
+                //     array[j] = temp
+                // }
+            }
+        }
+    }
+
+    const selectSort = (array) => {
+        for(let i = 0; i < array.length; i++) {
+            let maxIndex = 0
+            for(let j = 0; j < array.length - i;j++) {
+                if(array[j] > array[maxIndex]) {
+                    maxIndex = j;
+                }
+            };
+            swap(array, array.length - i - 1, maxIndex)
+        }
+    }
+
+    const partition = (arr, left, right) => {
+        let pivot = left,
+            index = pivot + 1;
+        for (let i = index; i <= right; i++) {
+            if (arr[i] < arr[pivot]) {
+                swap(arr, i, index);
+                index++;
+            }
+        }
+        swap(arr, pivot, index - 1);
+        return index - 1;
+    }
+
+    const quickSort = (arr, left, right) => {
+        let len = arr.length,
+		partitionIndex;
+        left = left ?? 0;
+        right = right ?? len - 1;
+        if(left < right) {
+            const index = partition(arr, left, right);
+            quickSort(arr, left, index - 1)
+            quickSort(arr, index + 1, right)
+        }
+    }
+
+    const merge = (left, right) => {
+        const res = [];
+        let leftIndex = 0, rightIndex = 0;
+        let leftLength = left.length;
+        let rightLength = right.length;
+        while(leftIndex < leftLength && rightIndex < rightLength) {
+            if(left[leftIndex] < right[rightIndex]) {
+                res.push(left[leftIndex])
+                leftIndex++
+            } else {
+                res.push(right[rightIndex])
+                rightIndex++
+            }
+        }
+        if(leftIndex < leftLength) res.push(...left.slice(leftIndex))
+        if(rightIndex < rightLength) res.push(...right.slice(rightIndex))
+        return res
+    }
+
+    const mergeSort = (array) => {
+        const len = array.length;
+        if(len === 1) return array;
+        const mid = Math.floor(len/2);
+        const left = array.slice(0, mid);
+        const right = array.slice(mid);
+        return merge(mergeSort(left), mergeSort(right))
+    }
+
+    const radixSort = (array) => {
+        const min =  Math.min(...array);
+        if(min < 0) {
+            array.forEach((e, index) => {
+                array[index] += Math.abs(min)
+            })
+        }
+        const max =  Math.max(...array);
+        let maxDigit = 1;
+        let mode = 10, div = 1;
+        for(let i = 0; i < maxDigit; i ++, mode *= 10, div *= 10) {
+            const bucketList = Array.from({length: 10}, () => [])
+            for(let j = 0; j < array.length; j ++) {
+                let num = parseInt(array[j] % mode / div)
+                bucketList[num].push(array[j])
+                if(array[j] >=  mode) {
+                    maxDigit++
+                }
+            }
+            let t = bucketList.flat(Infinity);
+            array.forEach((element,index) => {
+                array[index] = t[index]
+            });
+        }
+        if(min < 0) {
+            array.forEach((e, index) => {
+                array[index] -= Math.abs(min)
+            })
+        }
+    }
+
+    radixSort(array)
+</script>
+</html>
