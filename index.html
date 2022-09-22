@@ -274,7 +274,7 @@
             edges[index].push(val);
         }
         const dfs = (index) => {
-            visited[index] = true;
+            visited[index] = 1;
             for(let i = 0; i < edges[index].length; i++) {
                 const t = edges[index][i];
                 if(!visited[t]) {
@@ -282,11 +282,12 @@
                     if(!valid) {
                         return
                     }
-                } else {
+                } else if(visited[index] === 1) {
                     valid = false
                     return;
                 }
             }
+            visited[index] = 2;
         }
         for(let i = 0; i < numCourses; i++) {
             if(!visited[i]) {
@@ -295,6 +296,7 @@
         }
         return valid
     }
+
     const numDecodings = (s) => {
         const len = s.length;
         let a = 0, b = 1, c = 0;
@@ -310,6 +312,99 @@
             b = c;
         }
         return c;
+    }
+
+    const rob = (root) => {
+        const f = new Map();
+        const g = new Map();
+
+        const dfs = (node) => {
+            if(!node) return;
+            dfs(node.left);
+            dfs(node.right);
+            f.set(node, node.val + (g.get(node.left) ?? 0) +  (g.get(node.right) ?? 0));
+            g.set(node, Math.max(f.get(node.left) ?? 0, g.get(node.left) ?? 0) + Math.max(f.get(node.right) ?? 0, g.get(node.right) ?? 0))
+        }
+        dfs(root);
+        return Math.max(f.get(root) ?? 0, g.get(root) ?? 0);
+    }
+
+    const rob2 = (root) => {
+        const dfs = (node) => {
+            if(!node) return [0, 0];
+            const l = dfs(root.left);
+            const r = dfs(root.right);
+            const selected = node.val + l[1] + r[1];
+            const notSelected = Math.max(...l) + Math.max(...r);
+            return [selected, notSelected]
+        }
+        const res = dfs(root);
+        return Math.max(...res);
+    }
+
+    const deletNode = (node) => {
+        const nextNode = node.next;
+        node.val = nextNode.val;
+        node.next = nextNode.next;
+    }
+
+    const maxDepth = (root) => {
+        if(!root) return 0;
+        let res = 0;
+        const dfs = (node, depth) => {
+            if(!node) {
+                res = Math.max(res, depth);
+                return;
+            }
+            dfs(node.left, depth + 1);
+            dfs(node.right, depth + 1);
+        }
+        dfs(root, 0);
+        return res;
+    }
+
+    const pathSum = (root, targetSum) => {
+        const res = 0;
+        const dfs = (node, val) => {
+            if(!node) return;
+            if((node.val + val) === targetSum) {
+                res++;
+            }
+            dfs(node.left);
+            dfs(node)
+        }
+        dfs(root, 0)
+        res += pathSum(root.left, 0);
+        res += pathSum(root.right, 0);
+        return res;
+    }
+
+    const invertTree = (root) => {
+        if(!root) return;
+        const left = root.left;
+        const right = root.right;
+        root.left = right;
+        root.right = left;
+        invertTree(root.left);
+        invertTree(root.right);
+    }
+
+    const reconstructQueue = (people) => {
+        const res = Array.from({length: people.length});
+        people.sort((a, b) => a[0] - b[0] ||a[1] - b[1]);
+        for(const p of people) {
+            const space = p[1] + 1;
+            for(let i = 0; i < n; i++) {
+                if(!res[i]) {
+                    space--;
+                    if(!space) {
+                        res[i] = p;
+                        break;
+                    }
+                }
+            }
+        }
+        return res;
     }
 </script>
 </html>
