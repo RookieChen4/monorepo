@@ -406,5 +406,40 @@
         }
         return res;
     }
+
+    const minPathSum = (grid) => {
+        if(grid.length) return;
+        const m = grid[0].length;
+        const n = grid.length;
+        const dp = new Array(m).fill(new Array(n));
+        dp[0][0] = grid[0][0];
+        for(let i = 1; i < m; i++) {
+            dp[0][i] = grid[0][i] + dp[0][i - 1]
+        }
+        for(let i = 1; i < n; i++) {
+            dp[i][0] = grid[i][0] + dp[i - 1][0]
+        }
+        return dp[m-1][n-1];
+    }
+
+    const generateTrees = (n) => {
+        const buildTree = (l, r) => {
+            if(l > r) return [null];
+            const res = [];
+            for(let i = l; i <= r; i++) {
+                const left = buildTree(l, i - 1);
+                const right = buildTree(i + 1, r);
+                for(let j = 0; j < left.length;j++) {
+                    for(let k = 0; k < right.length;k++) {
+                        console.log(i, left[j], right[k]);
+                        // res.push(new TreeNode(i, left[j], right[k]))
+                    }
+                }
+            }
+            return res;
+        }
+        return buildTree(1, n)
+    }
+    generateTrees(3)
 </script>
 </html>
