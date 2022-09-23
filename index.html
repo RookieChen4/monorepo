@@ -441,5 +441,51 @@
         return buildTree(1, n)
     }
     generateTrees(3)
+
+    const rotate = (matrix) => {
+        const n = matrix.length;
+        for(let i = 0; i < Math.floor(n/2); i++) {
+            for(let j = 0; j < Math.floor((n+1)/2); j++) {
+                const temp = matrix[i][j];
+                matrix[i][j] = matrix[n - j - 1][i];
+                matrix[n - j - 1][i] = matrix[n - i - 1][n - j - 1];
+                matrix[n - i - 1][n - j - 1] = matrix[j][n - i - 1];
+                matrix[j][n - i - 1] = temp;
+            }
+        }
+    }
+
+    const levelOrder = (root) => {
+        const queue = [root];
+        const res = [];
+        while(queue.length) {
+            const currentSize = queue.length;
+            res.push([]);
+            for(let i = 1; i <= currentSize; i++) {
+                const node = queue.shift();
+                res[res.length - 1].push(node);
+                if(node.left) queue.push(node.left);
+                if(node.right) queue.push(node.right);
+            }
+        }
+        return res;
+    }
+
+    const sortColors = (nums) => {
+
+    }
+
+    const removeElement = (nums, val) => {
+        let left = 0, right = nums.length;
+        while(left < right) {
+            if(nums[left] === val) {
+                nums[left] = nums[right - 1];
+                right--;
+            } else {
+                left++
+            }
+        }
+        return left;
+    }
 </script>
 </html>
